@@ -18,7 +18,7 @@ export const arcjetProtection = async (req, res, next) => {
         }
     }
         // check for soofed bots that try to bypass bot detection by mimicking human behavior
-        if (decision.results.some(isSoofedBot)){
+        if (decision.results.some(isSpoofedBot)){
             return res.status(403).json({
                 error: "Soofed bot detected",
                  message: "Malicious bot activity detected",
