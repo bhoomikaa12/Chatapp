@@ -4,6 +4,7 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import path from "path";
+import cors from "cors";
 
 
 
@@ -19,6 +20,7 @@ const __dirname = path.resolve();
 const PORT = ENV.PORT || 3000;
 
 app.use(express.json()); // req.body parsing middleware
+app.use(cors({ origin: ENV.CLIENT_URL, credentials: true })); // enable CORS for the frontend origin
 app.use(cookieParser()); // for parsing cookies
 
 app.use("/api/auth", authRoutes);

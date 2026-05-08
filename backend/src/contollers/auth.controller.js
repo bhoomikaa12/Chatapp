@@ -30,7 +30,8 @@ export const signup = async (req, res) => {
         // 12345678 => $2a$10$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3V4LJfK
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
-
+        
+        console.log(req.body);
         const newUser = new User({
             fullname,
             email,
@@ -45,6 +46,7 @@ export const signup = async (req, res) => {
            // After CR
         //Persist user first, then issue auth cookie
         const savedUser = await newUser.save();
+        console.log("USER SAVED:", savedUser);
         generateToken(savedUser._id, res);    
 
             res.status(201).json({
