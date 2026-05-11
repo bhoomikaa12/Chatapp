@@ -20,8 +20,8 @@ const __dirname = path.resolve();
 const PORT = ENV.PORT || 3000;
 
 //app.use(express.json()); // req.body parsing
-app.use(express.json({ limit: "50mb" })); // chatgpt
-app.use(express.urlencoded({ limit: "50mb", extended: true })); // chatgpt
+app.use(express.json({ limit: "5mb" })); // chatgpt
+//app.use(express.urlencoded({ limit: "50mb", extended: true })); // chatgpt
 
 
 app.use(cors({ origin: ENV.CLIENT_URL, credentials: true })); // enable CORS for the frontend origin
